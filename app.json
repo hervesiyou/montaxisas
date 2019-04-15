@@ -4,6 +4,9 @@
     "slug": "montaxi",
     "privacy": "public",
     "sdkVersion": "32.0.0",
+    "packagerOpts": {
+      "port": 19007
+    },
     "platforms": [
       "ios",
       "android"

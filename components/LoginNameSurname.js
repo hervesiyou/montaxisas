@@ -1,9 +1,10 @@
 import React from 'react'; 
 import {ActivityIndicator,View,Text,AsyncStorage} from 'react-native';
-import { Container, Header,Left,Button,Icon,Right,Body,Title,Input,Image,Content,Form,Item as FormItem,Item,Label } from 'native-base';
-import { Font } from 'expo'; 
+import MyHeader from './Statics/MyHeader'
 
-import {customStyle} from '../styles/loginStyles'
+import {customStyle} from '../styles/loginStyles';
+import MyForm from './Statics/MyForm';
+import MyButton from './Statics/MyButton';
 
 export  default class LoginNameSurname extends React.Component {
  
@@ -11,19 +12,10 @@ export  default class LoginNameSurname extends React.Component {
     super(props);
     this.navigation= this.props.navigation,
     this.state = { 
-      loading: true,      
+          
      };
   }
 
-  async componentWillMount() {
-    await Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-      ProductSans: require("../assets/fonts/ProductSans.ttf"),
-    });
-    this.setState({ loading: false });
-  }
   componentDidMount(){
      console.log(this.navigation);
   }
@@ -36,43 +28,16 @@ export  default class LoginNameSurname extends React.Component {
   
   render() {
 
-    if (this.state.loading) {
-      return (
-        <View style={[customStyle.loading, customStyle.header]}>         
-          <ActivityIndicator size="small" color="#fff" />
-        </View>
-      )
-    }
-
-    return (   
-        
-        <Container style={[this.props.style, { fontFamily: 'space-mono',marginTop:22  }]} >
-            <Header span style={customStyle.header}>
-              <Left>
-                <Button transparent onPress={() => this._back()}>
-                  <Icon name="arrow-back" />
-                </Button>
-              </Left>              
-              <Body>              
-                <Title style={customStyle.topTitle}>Let's set up your account</Title>
-              </Body>
-              <Right />
-            </Header>
-            
-            <Form>
-              <FormItem floatingLabel>
-                <Label>FIRST NAME</Label>
-                <Input />
-              </FormItem>
-              <FormItem floatingLabel last>
-                <Label>LAST NAME</Label>
-                <Input />
-              </FormItem>                
-              <Button light warning title="Next" onPress={() => this._next()}><Text> Next </Text></Button>
-            </Form>       
-        </Container>
-        
-        
+    if ((this.props.components !=null)) {
+      return this.props.components.map((item,index) =>{
+         return item
+        }
+      );
+    } 
+    return (  
+        <View  style={[this.props.style, { fontFamily: 'space-mono',marginTop:22  }]} >            
+            <Text>Nothing to SHOW</Text>
+        </View>         
     )
   }
 }
