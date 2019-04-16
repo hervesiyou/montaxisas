@@ -41,9 +41,9 @@ const LogStack = createStackNavigator({
   );
   const InitialNavigator = createSwitchNavigator({
     Splash: SplashScreen,
-    LogS : LogStack
+   
   })
 
 
-export default createAppContainer(InitialNavigator, Logs);
+export default createAppContainer(InitialNavigator, LogStack);
  
