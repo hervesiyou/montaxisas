@@ -20,6 +20,7 @@ import LoginPhoneVerif12Screen from '../screens/LoginPhoneVerif12Screen';
 import LoginSignup13Screen from '../screens/LoginSignup13Screen';
 
 import MainTabNavigator from './MainTabNavigator';
+import SplashScreen from '../screens/SplashScreen';
  
 const LogStack = createStackNavigator({ 
     LoginFNLN1:{ screen : LoginFNLN1Screen, navigationOptions :{ header: null }},
@@ -36,8 +37,13 @@ const LogStack = createStackNavigator({
     LoginVerifPhone : { screen : LoginPhoneVerif12Screen,navigationOptions :{ header: null }},
     LoginSignup : { screen : LoginSignup13Screen,navigationOptions :{ header: null }},
     },
+
   );
+  const InitialNavigator = createSwitchNavigator({
+    Splash: SplashScreen,
+    LogS : LogStack
+  })
 
 
-export default createAppContainer(LogStack);
+export default createAppContainer(InitialNavigator, Logs);
  
