@@ -1,30 +1,51 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { AppLoading, Asset, Font, Icon } from 'expo';
+import { Platform, StatusBar, StyleSheet, View, Image } from 'react-native';
+import { AppLoading, Asset, Font, Icon, SplashScreen } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import JoinScreen from "./screens/JoinScreen";
+import AuthLoadingScreen from './screens/AuthLoadingScreen';
+import Slider from './screens/Slider';
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
+    isReady: false,
   };
+  componentDidMount() {
+    setTimeout(() => {
+      SplashScreen.preventAutoHide();
+    }, 5000);
+
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = { isLoading: true }
+  }
+
+
 
   render() {
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+    if (!this.state.isReady) {
       return (
-        <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
-        />
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
+        <View style={styles.container}> 
+          <Image style={styles.image}
+            source={require('./assets/images/screen.png')}
+            resizeMode='contain'
+            onLoad={this._cacheResourcesAsync}
+          />
         </View>
+
       );
+
     }
+    return (
+      <View style={styles.container}>
+        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+        <Slider />
+      </View>
+    );
+
   }
 
   _loadResourcesAsync = async () => {
@@ -46,22 +67,41 @@ export default class App extends React.Component {
         ProductSans: require("./assets/fonts/ProductSans.ttf"),
       }),
     ]);
-  };
+  }; 
+  
+  _cacheSplashResourcesAsync = async () => {
 
-  _handleLoadingError = error => {
-    // In this case, you might want to report the error to your error
-    // reporting service, for example Sentry
-    console.warn(error);
-  };
+    const gif = require('./assets/images/screen.png');
+    return Asset.fromModule(gif).downloadAsync();
 
-  _handleFinishLoading = () => {
-    this.setState({ isLoadingComplete: true });
-  };
+
+
+  }
+  _cacheResourcesAsync = async () => {
+    SplashScreen.hide();
+    const images = [
+      require('./assets/images/icon.png'),
+      require('./assets/images/robot-dev.png'),
+    ];
+
+    const cacheImages = images.map((image) => {
+      return Asset.fromModule(image).downloadAsync();
+    });
+
+    await Promise.all(cacheImages);
+    setTimeout(() => {
+      this.setState({ isReady: true });
+    }, 5000);
+
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  image:{
+   
   },
 });
