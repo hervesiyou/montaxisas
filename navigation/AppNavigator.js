@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import OtherScreen from '../screens/OtherScreen';
 import SignInScreen from '../screens/SignInScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
+
 import LoginFNLN1Screen from '../screens/LoginFNLN1Screen';
 import LoginPwdCpwd2Screen from '../screens/LoginPwdCpwd2Screen';
 import LoginCountryNumber3Screen from '../screens/LoginCountryNumber3Screen';
@@ -24,6 +25,7 @@ import MainTabNavigator from './MainTabNavigator';
 import SplashScreen from '../screens/SplashScreen';
  
 const LogStack = createStackNavigator({
+    
     Slider : { screen : Slider,navigationOptions :{ header: null }}, 
     LoginFNLN1:{ screen : LoginFNLN1Screen, navigationOptions :{ header: null }},
     LoginPwdCpwd: { screen :LoginPwdCpwd2Screen ,navigationOptions :{ header: null } },
@@ -40,12 +42,8 @@ const LogStack = createStackNavigator({
     LoginSignup : { screen : LoginSignup13Screen,navigationOptions :{ header: null }},
     },
 
-  );
-  const InitialNavigator = createSwitchNavigator({
-    Splash: SplashScreen,
-   
-  })
+  ); 
 
 
-export default createAppContainer(InitialNavigator, LogStack);
+export default createAppContainer(LogStack);
  

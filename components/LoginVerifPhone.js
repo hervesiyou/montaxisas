@@ -1,7 +1,6 @@
 import React from 'react'; 
-import {ActivityIndicator,View,Text,AsyncStorage,} from 'react-native';
-import { Container, Header,Left,Button,Icon,Right,Body,Title,Input,Image,Content,Form,Item,Item as FormItem,Label } from 'native-base';
-import { Font } from 'expo';
+import { View,Text,TouchableOpacity,TextInput,Picker,Image } from 'react-native'; 
+import MyHeader from './Statics/MyHeader';
 import {customStyle} from '../styles/loginStyles'
 
 export  default class LoginVerifPhone extends React.Component {
@@ -10,68 +9,53 @@ export  default class LoginVerifPhone extends React.Component {
     super(props);
     this.navigation = this.props.navigation,
     this.state = { 
-      loading: true,      
+      data: [],      
     };
-  }
-
-  async componentWillMount() {
-    await Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-      ProductSans: require("../assets/fonts/ProductSans.ttf"),
-    });
-    this.setState({ loading: false });
-  }
-  _next(){
-    AsyncStorage.setItem('userToken', 'abc');
-    this.navigation.navigate('LoginSignup');
+  } 
+  _next(){ 
+    this.navigation.navigate('LoginSignup',{data:this.state.data });
   };
   _back(){ 
     this.navigation.goBack();
   };
   _changeNumber(){ 
-    this.navigation.navigate('LoginChangeNumber');
+    this.navigation.navigate('LoginChangeNumber'),{data:this.state.data };
   };
   _verifCode(){ 
-    this.navigation.navigate('LoginVerifCode');
+    this.navigation.navigate('LoginVerifCode',{data:this.state.data });
   };
   
-  render() {
-
-    if (this.state.loading) {
-      return (
-        <View style={[customStyle.loading, customStyle.header]}>         
-          <ActivityIndicator size="small" color="#fff" />
-        </View>
-      )
-    }
-
-    return (        
-        <Container style={[this.props.style, { fontFamily: 'space-mono',marginTop:22  }]} >
-            <Header span style={customStyle.header}>
-              <Left>
-                <Button transparent onPress={() =>this._back()}>
-                  <Icon name="arrow-back" />
-                </Button>
-              </Left>              
-              <Body>              
-                <Title style={customStyle.topTitle}> Phone Verification</Title>
-              </Body>
-              <Right />
-            </Header>
-            <Form>
-              <FormItem floatingLabel>
-                <Label>Phone Verification</Label>
-                <Input />
-              </FormItem>
-                            
-              <Button light warning title="Next" onPress={() => this._next()}><Text> Next </Text></Button>
-              <Button light warning title="Next" onPress={() => this._changeNumber()}><Text> Change Number </Text></Button>
-              <Button light warning title="Next" onPress={() => this._verifCode()}><Text>Verify Code </Text></Button>
-            </Form> 
-             
-        </Container>
+  render() { 
+    return (   
+      <View style={{flex:1,flexDirection:'column'}}>
+          <View style={{flex:2,justifyContent:'flex-start',}}>
+          <MyHeader span 
+                title="A SMS was send to ***** "  
+                navigation={this.props.navigation}
+          />
+          </View>
+          <View style={{flex:2}}> 
+              <View style={{flex:1, marginVertical:20, marginHorizontal: 40,}}>
+              
+                <TextInput  
+                    style={[customStyle.textinput,{ flex: 5, textAlign: "center" }]}
+                    placeholder='CODE'  
+                    onSubmitEditing={(text) => this.setState({data:[...this.state.data,{phone:text} ]})}          
+                /> 
+              </View>
+          </View>   
+            <View style={[customStyle.topTitle,{flex:3,justifyContent:'center', flexDirection: "column" }]}>             
+                <TouchableOpacity onPress={ () => this._next() }> 
+                    <Text style={customStyle.mybutton}>Next</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={ () => this._changeNumber() }> 
+                    <Text style={customStyle.mybutton}>Change Number</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={ () => this._verifCode() }> 
+                    <Text style={customStyle.mybutton}>Verify Code</Text>
+                </TouchableOpacity>
+            </View>      
+      </View>  
     )
   }
 }

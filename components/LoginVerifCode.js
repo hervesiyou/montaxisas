@@ -1,7 +1,6 @@
 import React from 'react'; 
-import {ActivityIndicator,View,Text,AsyncStorage,} from 'react-native';
-import { Container, Header,Left,Button,Icon,Right,Body,Title,Input,Image,Content,Form,Item,Item as FormItem,Label } from 'native-base';
-import { Font } from 'expo';
+import { View,Text,TouchableOpacity,TextInput,Picker,Item } from 'react-native'; 
+import MyHeader from './Statics/MyHeader';
 import {customStyle} from '../styles/loginStyles'
 
 export  default class LoginVerifCode extends React.Component {
@@ -10,22 +9,13 @@ export  default class LoginVerifCode extends React.Component {
     super(props);
     this.navigation = this.props.navigation,
     this.state = { 
-      loading: true,      
+      loading: true, 
+      data:[]       
     };
-  }
-
-  async componentWillMount() {
-    await Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-      ProductSans: require("../assets/fonts/ProductSans.ttf"),
-    });
-    this.setState({ loading: false });
-  }
+  } 
   _next(){
-    AsyncStorage.setItem('userToken', 'abc');
-    this.navigation.navigate('LoginWelcome');
+     
+    this.navigation.navigate('LoginWelcome',{data:this.state.data });
   };
   _back(){ 
     this.navigation.goBack();
@@ -34,40 +24,34 @@ export  default class LoginVerifCode extends React.Component {
     this.navigation.navigate('LoginChangeNumber');
   };
   
-  render() {
-
-    if (this.state.loading) {
-      return (
-        <View style={[customStyle.loading, customStyle.header]}>         
-          <ActivityIndicator size="small" color="#fff" />
-        </View>
-      )
-    }
-
-    return (        
-        <Container style={[this.props.style, { fontFamily: 'space-mono',marginTop:22  }]} >
-            <Header span style={customStyle.header}>
-              <Left>
-                <Button transparent onPress={() =>this._back()}>
-                  <Icon name="arrow-back" />
-                </Button>
-              </Left>              
-              <Body>              
-                <Title style={customStyle.topTitle}> Code Verification</Title>
-              </Body>
-              <Right />
-            </Header>
-            <Form>
-              <FormItem floatingLabel>
-                <Label>Code Verification</Label>
-                <Input />
-              </FormItem>
-                            
-              <Button light warning title="Next" onPress={() => this._next()}><Text> Next </Text></Button>
-              <Button light warning title="Next" onPress={() => this._changeNumber()}><Text> Change Number </Text></Button>
-            </Form> 
-             
-        </Container>
+  render() { 
+    return ( 
+        
+      <View style={{flex:1,flexDirection:'column'}}>
+          <View style={{flex:2,justifyContent:'flex-start',}}>
+            <MyHeader span 
+                  title="Input the Verification Code you received by SMS"  
+                  navigation={this.props.navigation}
+            />
+          </View>
+          <View style={{flex:1}}>      
+              <TextInput  
+                  style={[customStyle.textinput,{ flex: 1, textAlign: "left" }]}
+                  placeholder='Verification code'   
+                  onSubmitEditing={(text) => this.setState({data:[...this.state.data,{code:text} ]})}          
+              />         
+          </View>   
+            <View style={[customStyle.topTitle,{flex:3,justifyContent:'center', flexDirection: "column" }]}>             
+                <TouchableOpacity onPress={ () => this._next() }> 
+                    <Text style={customStyle.mybutton}>Next</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={ () => this._changeNumber() }> 
+                    <Text style={customStyle.mybutton}>Change Number</Text>
+                </TouchableOpacity>
+            </View>      
+      </View>     
+              
+        
     )
   }
 }

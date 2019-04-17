@@ -1,17 +1,20 @@
 import React from 'react'; 
-import { View,Text,TouchableOpacity,TextInput } from 'react-native'; 
+import { View,Text,TouchableOpacity,TextInput,AsyncStorage } from 'react-native'; 
 import MyHeader from './Statics/MyHeader';
-import {customStyle} from '../styles/loginStyles'
+import {customStyle} from '../styles/loginStyles';
+//import AsyncStorage from '@react-native-community/async-storage';
 
 export  default class LoginNameSurname extends React.Component {
  
   constructor(props) {
     super(props);
     this.navigation= this.props.navigation,
+    
     this.state = { 
-      loading: true, 
+      firstname: '', 
+      lastname: '', 
       data:[]     
-     };
+    };
   }
  
   componentDidMount(){
@@ -19,11 +22,39 @@ export  default class LoginNameSurname extends React.Component {
   }
   _next() {
      console.log(this.state.data);
+     this._storageAccess('SET','firstname',this.state.firstname);
+     this._storageAccess('SET','lastname',this.state.lastname);
      this.navigation.navigate('LoginPwdCpwd',{data:this.state.data });
   };
   _back(){  
     this.navigation.goBack();
   };
+  _storageAccess = async (mode,name,value="") => {
+    switch(mode){
+        case 'SET':{
+            try {
+              await AsyncStorage.setItem(name,value);
+              return name+' save  successfully';
+            } catch (e) {
+              return ' Problem saving '+name;
+            }
+          break;
+        }
+        case 'GET':{
+            try {
+              const value = await AsyncStorage.getItem(name, (err, item) => {console.log(item);return item;})
+              if(value !== null) {
+                return value
+              }
+            } catch(e) {
+              return ' Problem getting '+name;
+            }
+          break;
+        }
+        default: break;
+    }
+ 
+  }
   
   render() { 
     return (   
@@ -38,12 +69,14 @@ export  default class LoginNameSurname extends React.Component {
               <TextInput  
                   style={[customStyle.textinput,{ flex: 1, textAlign: "left" }]}
                   placeholder='FIRST NAME' 
-                  onSubmitEditing={(text) => this.setState({data:[...this.state.data,{firstname:text} ]})}                  
+                  onSubmitEditing={
+                    (text) =>{this.setState({data:[...this.state.data,{firstname:text} ],firstname:text}) }
+                  }                  
               />     
-                <TextInput  
+              <TextInput  
                   style={[customStyle.textinput,{ flex: 1, textAlign: "left" }]}
                   placeholder='LAST NAME'   
-                  onSubmitEditing={(text) => this.setState({data:[...this.state.data,{lastname:text} ]})}          
+                  onSubmitEditing={(text) => this.setState({data:[...this.state.data,{lastname:text} ],lastname:text})}          
               /> 
             </View>   
               <View style={[customStyle.topTitle,{flex:3,justifyContent:'center', flexDirection: "column" }]}>             
