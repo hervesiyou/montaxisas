@@ -40,7 +40,7 @@ export  default class LoginNameSurname extends React.Component {
                   placeholder='FIRST NAME' 
                   onSubmitEditing={(text) => this.setState({data:[...this.state.data,{firstname:text} ]})}                  
               />     
-                <TextInput  
+              <TextInput  
                   style={[customStyle.textinput,{ flex: 1, textAlign: "left" }]}
                   placeholder='LAST NAME'   
                   onSubmitEditing={(text) => this.setState({data:[...this.state.data,{lastname:text} ]})}          

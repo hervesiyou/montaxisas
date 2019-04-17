@@ -13,9 +13,8 @@ export  default class LoginTown extends React.Component {
       data:[]      
     };
   } 
-  _next(){
-    
-    this.navigation.navigate('LoginSearchTown');
+  _next(){    
+    this.navigation.navigate('LoginSearchTown',{data:this.state.data });
   };
   _back(){ 
     this.navigation.goBack();
@@ -25,31 +24,30 @@ export  default class LoginTown extends React.Component {
 
     return (        
       <View style={{flex:1,flexDirection:'column'}}>
-      <View style={{flex:2,justifyContent:'flex-start',}}>
-      <MyHeader span 
-            title="Select your Town"  
-            navigation={this.props.navigation}
-      />
+          <View style={{flex:2,justifyContent:'flex-start',}}>
+          <MyHeader span 
+                title="Select your Current City"  
+                navigation={this.props.navigation}
+          />
+          </View>
+          <View style={{flex:2}}>
+      
+              <Picker
+                style={[customStyle.picker,{ flex: 1}]}
+                onValueChange={(itemValue, itemIndex) =>
+                  this.setState( {data:[...this.state.data,{country:itemValue} ]})
+                }>
+                <Picker.Item label="Select Town" value="CMR" />
+                <Picker.Item label="OTHER" value="Other" />
+              </Picker>          
+              
+          </View>   
+            <View style={[customStyle.topTitle,{flex:3,justifyContent:'center', flexDirection: "column" }]}>             
+                <TouchableOpacity onPress={ () => this._next() }> 
+                    <Text style={customStyle.mybutton}>Next</Text>
+                </TouchableOpacity>
+            </View>      
       </View>
-      <View style={{flex:2}}>
-  
-          <Picker
-             style={[customStyle.picker,{ flex: 1}]}
-             onValueChange={(itemValue, itemIndex) =>
-              this.setState( {data:[...this.state.data,{country:itemValue} ]})
-            }>
-            <Picker.Item label="Select Town" value="CMR" />
-            <Picker.Item label="OTHER" value="Other" />
-          </Picker> 
-          
-           
-      </View>   
-        <View style={[customStyle.topTitle,{flex:3,justifyContent:'center', flexDirection: "column" }]}>             
-            <TouchableOpacity onPress={ () => this._next() }> 
-                <Text style={customStyle.mybutton}>Next</Text>
-            </TouchableOpacity>
-        </View>      
-  </View>
     )
   }
 }

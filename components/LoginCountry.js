@@ -10,8 +10,9 @@ export  default class LoginCountry extends React.Component {
     super(props);
     this.navigation = this.props.navigation,
     this.state = { 
-      loading: true,  
-      modalVisible:true,    
+      data: [],  
+      modalVisible:true,  
+
     };
   } 
   _next(){
