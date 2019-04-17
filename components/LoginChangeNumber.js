@@ -9,11 +9,11 @@ export  default class LoginChangeNumber extends React.Component {
     super(props);
     this.navigation = this.props.navigation,
     this.state = { 
-      loading: true,      
+      data: [ ],      
     };
   } 
   _next(){ 
-    this.navigation.navigate('LoginPhoneNumber');
+    this.navigation.navigate('LoginPhoneNumber',{data:this.state.data });
   };
   _back(){ 
     this.navigation.goBack();

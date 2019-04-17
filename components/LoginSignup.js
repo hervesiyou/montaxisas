@@ -1,7 +1,6 @@
 import React from 'react'; 
-import {ActivityIndicator,View,Text,AsyncStorage,} from 'react-native';
-import { Container, Header,Left,Button,Icon,Right,Body,Title,Input,Image,Content,Form,Item,Item as FormItem,Label } from 'native-base';
- 
+import {ActivityIndicator,View,Text,AsyncStorage,} from 'react-native'; 
+import MyHeader from './Statics/MyHeader';
 import {customStyle} from '../styles/loginStyles'
 
 export  default class LoginSignup extends React.Component {

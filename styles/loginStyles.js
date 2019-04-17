@@ -15,7 +15,7 @@ export const customStyle = StyleSheet.create({
     flex:1,
  },
  topTitle:{        
-      fontFamily: "ProductSans",
+      fontFamily: "Roboto",
       fontSize: 20,
       fontWeight: "normal",
       fontStyle: "normal",
