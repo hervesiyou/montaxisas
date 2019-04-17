@@ -3,5 +3,5 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "p4-mp2"
+  "urlRandomness": null
 }

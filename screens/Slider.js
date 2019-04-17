@@ -56,7 +56,7 @@ const slides = [
   {
     key: 'somethun',
     titleStyle: styles.title,
-    text: 'Bienvenue dans mon taxi',
+    text: 'Bienvenue dans mon',
     textStyle: styles.text,
     image: require('../assets/images/illustration.png'),
     backgroundColor: '#febe29',
@@ -64,7 +64,7 @@ const slides = [
   {
     key: 'somethun-dos',
     titleStyle: styles.title,
-    text: 'Bienvenue dans mon taxi',
+    text: 'Other cool stuff',
     textStyle: styles.text,
     image: require('../assets/images/illustration.png'),
     backgroundColor: '#febe29',

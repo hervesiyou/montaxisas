@@ -1,10 +1,1 @@
-{
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 8354,
-  "expoServerNgrokUrl": "https://p4-mp2.anonymous.montaxisas.exp.direct",
-  "packagerNgrokUrl": "https://packager.p4-mp2.anonymous.montaxisas.exp.direct",
-  "ngrokPid": 8437,
-  "webpackServerPort": null
-}
+{}

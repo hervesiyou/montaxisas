@@ -1,7 +1,4 @@
-<<<<<<< HEAD
+ 
  
 node_modules/
-.expo/ 
-=======
-node_modules
->>>>>>> feature-etienne@slider
+.expo/  
