@@ -18,10 +18,12 @@ import LoginSigning10Screen from '../screens/LoginSigning10Screen';
 import LoginPhoneNumber11Screen from '../screens/LoginPhoneNumber11Screen';
 import LoginPhoneVerif12Screen from '../screens/LoginPhoneVerif12Screen';
 import LoginSignup13Screen from '../screens/LoginSignup13Screen';
+import Slider from '../screens/Slider';
 
 import MainTabNavigator from './MainTabNavigator';
  
-const LogStack = createStackNavigator({ 
+const LogStack = createStackNavigator({
+    Slider : { screen : Slider,navigationOptions :{ header: null }}, 
     LoginFNLN1:{ screen : LoginFNLN1Screen, navigationOptions :{ header: null }},
     LoginPwdCpwd: { screen :LoginPwdCpwd2Screen ,navigationOptions :{ header: null } },
     LoginCountryNumber: { screen :LoginCountryNumber3Screen ,navigationOptions :{ header: null } },
