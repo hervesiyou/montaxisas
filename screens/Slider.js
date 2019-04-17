@@ -1,13 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import SplashScreen from 'rn-splash-screen';
 
 export default class slider extends React.Component {
 
-  componentDidMount(){
-    SplashScreen.hide();
-  }
+ 
 
   constructor(props) {
     super(props);
@@ -84,7 +81,7 @@ const slides = [
     titleStyle: styles.title,
     text: 'Description.\nSay something cool',
     textStyle: styles.text,
-    image: require('./Images/illustration.png'),
+    image: require('../assets/images/illustration.png'),
     backgroundColor: '#febe29',
   },
   {
@@ -92,7 +89,7 @@ const slides = [
     titleStyle: styles.title,
     text: 'Other cool stuff',
     textStyle: styles.text,
-    image: require('./Images/illustration.png'),
+    image: require('../assets/images/illustration1.png'),
     backgroundColor: '#febe29',
   }
 ];
