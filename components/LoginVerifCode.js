@@ -46,7 +46,7 @@ export  default class LoginVerifCode extends React.Component {
                     <Text style={customStyle.mybutton}>Next</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={ () => this._changeNumber() }> 
-                    <Text style={customStyle.mybutton}>Channge Number</Text>
+                    <Text style={customStyle.mybutton}>Change Number</Text>
                 </TouchableOpacity>
             </View>      
       </View>     
