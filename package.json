@@ -17,10 +17,11 @@
     "native-base": "^2.12.1",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-native-popup-dialog": "^0.18.2",
     "react-native-app-intro-slider": "^2.0.1",
+    "react-native-popup-dialog": "^0.18.2",
     "react-native-svg": "^5.5.1",
     "react-native-svg-uri": "^1.2.3",
+    "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.0.9",
     "rn-splash-screen": "^5.2.0"
   },

@@ -4,6 +4,7 @@ import Icon  from '@expo/vector-icons/Ionicons';
 import { StyleSheet, Text, View,Button ,TouchableOpacity} from 'react-native';
 import {createSwitchNavigator,createBottomTabNavigator,createStackNavigator ,createDrawerNavigator,createAppContainer} from 'react-navigation';
 import {customStyle} from '../styles/loginStyles';
+//import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Slider from '../screens/Slider';
 import LoginFNLN1Screen from '../screens/LoginFNLN1Screen';
@@ -31,16 +32,27 @@ export class MainNavigator extends React.Component {
 
 }
  
-class Profile extends Component {
+class Trips extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Profile component </Text>
+        <Text> Trips component </Text>
       </View>
     )
   }
 }
-class Setting extends Component {
+
+class TaxiPosition extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text> Trips component </Text>
+      </View>
+    )
+  }
+}
+
+class Getataxi extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -53,7 +65,17 @@ class Setting extends Component {
   }
 }
 
-class Feed extends Component {
+class Alerts extends Component {
+  render() {
+    return (
+      <View style={styles.dashboard}>
+        <Text> Feed component </Text>
+      </View>
+    )
+  }
+}
+
+class MyWallets extends Component {
   render() {
     return (
       <View style={styles.dashboard}>
@@ -87,9 +109,71 @@ const LogStack = createStackNavigator({
 
 
 const DashBoardTabNavigator=createBottomTabNavigator({
-  Feed,
-  Profile,
-  Setting,
+  TaxiPosition:{
+    screen:TaxiPosition,
+    navigationOptions:{
+      tabBarLabel: ({ tintColor }) => (
+        <Text style={{ fontSize: 10, color: tintColor }}>
+          Trips
+        </Text>
+      ),
+      tabBarIcon: ({ horizontal, tintColor }) =>
+      <Icon name="home" size={horizontal ? 20 : 25} color={tintColor} />
+
+    }
+  },
+  Trips:{
+    screen:TaxiPosition,
+    navigationOptions:{
+      tabBarLabel: ({ tintColor }) => (
+        <Text style={{ fontSize: 10, color: tintColor }}>
+          Trips
+        </Text>
+      ),
+      tabBarIcon: ({ horizontal, tintColor }) =>
+      <Icon name="home" size={horizontal ? 20 : 25} color={tintColor} />
+
+    }
+  },
+  MyWallets:{
+    screen:TaxiPosition,
+    navigationOptions:{
+      tabBarLabel: ({ tintColor }) => (
+        <Text style={{ fontSize: 10, color: tintColor }}>
+          Trips
+        </Text>
+      ),
+      tabBarIcon: ({ horizontal, tintColor }) =>
+      <Icon name="home" size={horizontal ? 20 : 25} color={tintColor} />
+
+    }
+  },
+  Alerts:{
+    screen:TaxiPosition,
+    navigationOptions:{
+      tabBarLabel: ({ tintColor }) => (
+        <Text style={{ fontSize: 10, color: tintColor }}>
+          Trips
+        </Text>
+      ),
+      tabBarIcon: ({ horizontal, tintColor }) =>
+      <Icon name="home" size={horizontal ? 20 : 25} color={tintColor} />
+
+    }
+  },
+  Getataxi:{
+    screen:TaxiPosition,
+    navigationOptions:{
+      tabBarLabel: ({ tintColor }) => (
+        <Text style={{ fontSize: 10, color: tintColor }}>
+          Trips
+        </Text>
+      ),
+      tabBarIcon: ({ horizontal, tintColor }) =>
+      <Icon name="home" size={horizontal ? 20 : 25} color={tintColor} />
+
+    }
+  }
 
 },
 {
