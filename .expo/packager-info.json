@@ -1,9 +1,10 @@
 {
-  "devToolsPort": 19002,
+  "devToolsPort": 19004,
   "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 11239,
-  "expoServerNgrokUrl": "https://fu-zr9.anonymous.montaxisas.exp.direct",
-  "packagerNgrokUrl": "https://packager.fu-zr9.anonymous.montaxisas.exp.direct",
-  "ngrokPid": 11311
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
 }

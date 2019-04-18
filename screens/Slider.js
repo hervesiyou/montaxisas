@@ -2,10 +2,13 @@ import React from 'react';
 import { StyleSheet, View, Text , Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import LoginFNLN1Screen from '../screens/LoginFNLN1Screen';
+import AppNavigator from '../navigation/AppNavigator';
 
 export default class slider extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
+    
     this.state = {
       showRealApp: false,
     };
@@ -20,7 +23,7 @@ export default class slider extends React.Component {
     if (this.state.showRealApp) {
       return (
         <LoginFNLN1Screen navigation={this.props.navigation}  />
-      );
+        );
     } else {
       return (
         <AppIntroSlider

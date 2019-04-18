@@ -3,6 +3,11 @@ import LoginNameSurname from '../components/LoginNameSurname';
 
 export default class LoginFNLN1Screen extends Component {
  
+  constructor(props){
+    super(props)
+    console.log(props);
+    
+  }
   render() {
     
     return (

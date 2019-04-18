@@ -26,6 +26,10 @@ export  default class LoginNameSurname extends React.Component {
      this._storageAccess('SET','lastname',this.state.lastname);
      this.navigation.navigate('LoginPwdCpwd',{data:this.state.data });
   };
+  _home(){
+    this.navigation.navigate('DrawerNav');
+  }
+
   _back(){  
     this.navigation.goBack();
   };
@@ -82,6 +86,9 @@ export  default class LoginNameSurname extends React.Component {
               <View style={[customStyle.topTitle,{flex:3,justifyContent:'center', flexDirection: "column" }]}>             
                   <TouchableOpacity onPress={ () => this._next() }> 
                       <Text style={customStyle.mybutton}>Next</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={ () => this._home() }> 
+                      <Text style={customStyle.mybutton}>Home</Text>
                   </TouchableOpacity>
               </View>      
         </View>      

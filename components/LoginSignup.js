@@ -1,5 +1,5 @@
 import React from 'react'; 
-import {ActivityIndicator,View,Text,AsyncStorage,} from 'react-native'; 
+import {TouchableOpacity,View,Text,AsyncStorage, TextInput} from 'react-native'; 
 import MyHeader from './Statics/MyHeader';
 import {customStyle} from '../styles/loginStyles'
 

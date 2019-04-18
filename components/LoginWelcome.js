@@ -21,6 +21,9 @@ export  default class LoginWelcome extends React.Component {
   _signing(){ 
     this.navigation.navigate('LoginSigning');
   };
+  _home(){
+    this.navigation.navigate('DrawerNav');
+  }
   
   render() { 
     return (  
@@ -51,6 +54,9 @@ export  default class LoginWelcome extends React.Component {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => this._signing()}> 
                       <Text style={customStyle.mybutton}>Signing</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => this._home()}> 
+                      <Text style={customStyle.mybutton}>Home</Text>
                   </TouchableOpacity>
                    <Text>Don't have account ? Sign Up</Text>
               </View>      
