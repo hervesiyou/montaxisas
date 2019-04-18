@@ -6,6 +6,7 @@ import JoinScreen from "./screens/JoinScreen";
 import AuthLoadingScreen from './screens/AuthLoadingScreen';
 import Slider from './screens/Slider';
 import MainTabNavigator from './navigation/MainTabNavigator';
+import { Text } from 'native-base';
 
 export default class App extends React.Component {
   state = {
@@ -29,13 +30,15 @@ export default class App extends React.Component {
   render() {
     if (!this.state.isReady) {
       return (
-        <View style={styles.container}> 
+        <View style={styles.containers}> 
           <Image style={styles.image}
-            source={require('./assets/images/screen.png')}
+            source={require('./assets/images/splash_2.png')}
             resizeMode='contain'
             onLoad={this._cacheResourcesAsync}
           />
-
+           <Text style={styles.textView}>
+                    Mon Taxi</Text><Text></Text> 
+                
         </View>
 
       );
@@ -73,7 +76,7 @@ export default class App extends React.Component {
   
   _cacheSplashResourcesAsync = async () => {
 
-    const gif = require('./assets/images/screen.png');
+    const gif = require('./assets/images/splash_2.png');
     return Asset.fromModule(gif).downloadAsync();
 
 
@@ -102,8 +105,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+
   },
-  image:{
-   
+  containers: {
+    flex: 1,
+    backgroundColor: "#FFF301",
+    justifyContent: 'center',
+    alignItems: 'center'
   },
+  textView: {
+    color: 'white',
+    fontSize: 40,
+    fontWeight: 'bold'
+},
 });
