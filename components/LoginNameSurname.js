@@ -33,6 +33,9 @@ export  default class LoginNameSurname extends React.Component {
   _back(){  
     this.navigation.goBack();
   };
+  _home(){  
+    this.navigation.navigate("MainApp")
+  };
   _storageAccess = async (mode,name,value="") => {
     switch(mode){
         case 'SET':{

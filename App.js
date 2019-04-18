@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View, Image } from 'react-native';
 import { AppLoading, Asset, Font, Icon, SplashScreen } from 'expo';
-import AppNavigator from './navigation/AppNavigator';
+import MainNavigator from './navigation/MainNavigator';
 import JoinScreen from "./screens/JoinScreen";
 import AuthLoadingScreen from './screens/AuthLoadingScreen';
 import Slider from './screens/Slider';
@@ -17,7 +17,6 @@ export default class App extends React.Component {
     setTimeout(() => {
       SplashScreen.preventAutoHide();
     }, 5000);
-
   }
 
   constructor(props) {
@@ -40,14 +39,15 @@ export default class App extends React.Component {
                     Mon Taxi</Text><Text></Text> 
                 
         </View>
-
       );
-
-    }
+  }
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <MainTabNavigator />
+
+        {/* <AppNavigator /> */}
+        <MainNavigator />
+
       </View>
     );
 
