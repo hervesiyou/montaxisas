@@ -1,8 +1,9 @@
  
 import React, { Component } from 'react'
 import Icon  from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Text, View,Button } from 'react-native';
+import { StyleSheet, Text, View,Button ,TouchableOpacity} from 'react-native';
 import {createSwitchNavigator,createBottomTabNavigator,createStackNavigator ,createDrawerNavigator,createAppContainer} from 'react-navigation';
+import {customStyle} from '../styles/loginStyles';
 
 import Slider from '../screens/Slider';
 import LoginFNLN1Screen from '../screens/LoginFNLN1Screen';
@@ -17,9 +18,7 @@ import LoginWelcome9Screen from '../screens/LoginWelcome9Screen';
 import LoginSigning10Screen from '../screens/LoginSigning10Screen';
 import LoginPhoneNumber11Screen from '../screens/LoginPhoneNumber11Screen';
 import LoginPhoneVerif12Screen from '../screens/LoginPhoneVerif12Screen';
-import LoginSignup13Screen from '../screens/LoginSignup13Screen';
-// import MainComponentScreen from './screens/MainComponentScreen';
-// 
+import LoginSignup13Screen from '../screens/LoginSignup13Screen'; 
 
 export class MainNavigator extends React.Component {
   render() {
@@ -31,29 +30,7 @@ export class MainNavigator extends React.Component {
   }
 
 }
-/*
-class WelcomeScreen extends React.Component {  
-  render() {  
-    return (
-      <View style={styles.container}>
-         <Text> je suis dans le WelconeScreen </Text>
-	       <Button title='Login' onPress={()=>{ this.props.navigation.navigate('Dashboard')  } }/>
-         <Button title='Sign' onPress={()=>{this.props.navigation.navigate('Welcome') } }/>
-      </View>
-    );
-  }
-}
-class DashBoardScreen extends React.Component {
-  render() {
-    console.log(this.props);
-    return (
-      <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-         <Text> Je suis dans le Dashboar d </Text>
-      </View>
-    );
-  }
-}
-*/
+ 
 class Profile extends Component {
   render() {
     return (
@@ -68,6 +45,9 @@ class Setting extends Component {
     return (
       <View style={styles.container}>
         <Text> Setting Component </Text>
+        <TouchableOpacity onPress={ () => this.props.navigation.navigate("Slider") }> 
+            <Text style={customStyle.mybutton}>Home</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -99,8 +79,7 @@ const LogStack = createStackNavigator({
   LoginSigning : { screen : LoginSigning10Screen,navigationOptions :{ header: null }},
   LoginPhoneNumber : { screen : LoginPhoneNumber11Screen,navigationOptions :{ header: null }},
   LoginVerifPhone : { screen : LoginPhoneVerif12Screen,navigationOptions :{ header: null }},
-  LoginSignup : { screen : LoginSignup13Screen,navigationOptions :{ header: null }},
-  // MainComponent : { screen : MainComponentScreen,navigationOptions :{ header: null }},
+  LoginSignup : { screen : LoginSignup13Screen,navigationOptions :{ header: null }}, 
   },
 
 ); 
@@ -111,6 +90,7 @@ const DashBoardTabNavigator=createBottomTabNavigator({
   Feed,
   Profile,
   Setting,
+
 },
 {
   navigationOptions:({navigation})=>{
@@ -121,7 +101,7 @@ const DashBoardTabNavigator=createBottomTabNavigator({
   }
 })
 const DashBoardStackNavigator=createStackNavigator({
-  // Dashboard:{screen:DashBoardScreen},
+ 
   TabDashboard:{screen:DashBoardTabNavigator}
 },
 {

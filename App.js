@@ -15,7 +15,6 @@ export default class App extends React.Component {
     setTimeout(() => {
       SplashScreen.preventAutoHide();
     }, 5000);
-
   }
 
   constructor(props) {
