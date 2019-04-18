@@ -13,12 +13,11 @@ export  default class LoginSignup extends React.Component {
     };
   } 
   _next(){ 
-    this.navigation.navigate('LoginWelcome');
+    this.navigation.navigate('MainApp');
   };
   _back(){ 
     this.navigation.goBack();
-  };
-  
+  }; 
   
   render() { 
     return (        
@@ -41,7 +40,7 @@ export  default class LoginSignup extends React.Component {
           </View>   
             <View style={[customStyle.topTitle,{flex:3,justifyContent:'center', flexDirection: "column" }]}>             
                 <TouchableOpacity onPress={ () => this._next() }> 
-                    <Text style={customStyle.mybutton}>Sign UP</Text>
+                    <Text style={customStyle.mybutton}>Main Application</Text>
                 </TouchableOpacity>
             </View>      
       </View>

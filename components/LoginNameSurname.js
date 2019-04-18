@@ -29,6 +29,9 @@ export  default class LoginNameSurname extends React.Component {
   _back(){  
     this.navigation.goBack();
   };
+  _home(){  
+    this.navigation.navigate("MainApp")
+  };
   _storageAccess = async (mode,name,value="") => {
     switch(mode){
         case 'SET':{
@@ -82,6 +85,9 @@ export  default class LoginNameSurname extends React.Component {
               <View style={[customStyle.topTitle,{flex:3,justifyContent:'center', flexDirection: "column" }]}>             
                   <TouchableOpacity onPress={ () => this._next() }> 
                       <Text style={customStyle.mybutton}>Next</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={ () => this._home() }> 
+                      <Text style={customStyle.mybutton}>Home</Text>
                   </TouchableOpacity>
               </View>      
         </View>      

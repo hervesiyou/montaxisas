@@ -1,10 +1,7 @@
 import React from 'react';
 import { createAppContainer,createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
-import HomeScreen from '../screens/HomeScreen';
-import OtherScreen from '../screens/OtherScreen';
-import SignInScreen from '../screens/SignInScreen';
-import AuthLoadingScreen from '../screens/AuthLoadingScreen';
+
 
 import LoginFNLN1Screen from '../screens/LoginFNLN1Screen';
 import LoginPwdCpwd2Screen from '../screens/LoginPwdCpwd2Screen';
@@ -19,6 +16,7 @@ import LoginSigning10Screen from '../screens/LoginSigning10Screen';
 import LoginPhoneNumber11Screen from '../screens/LoginPhoneNumber11Screen';
 import LoginPhoneVerif12Screen from '../screens/LoginPhoneVerif12Screen';
 import LoginSignup13Screen from '../screens/LoginSignup13Screen';
+// import MainComponentScreen from '../screens/MainComponentScreen';
 import Slider from '../screens/Slider';
 
 import MainTabNavigator from './MainTabNavigator';
@@ -40,6 +38,7 @@ const LogStack = createStackNavigator({
     LoginPhoneNumber : { screen : LoginPhoneNumber11Screen,navigationOptions :{ header: null }},
     LoginVerifPhone : { screen : LoginPhoneVerif12Screen,navigationOptions :{ header: null }},
     LoginSignup : { screen : LoginSignup13Screen,navigationOptions :{ header: null }},
+    // MainComponent : { screen : MainComponentScreen,navigationOptions :{ header: null }},
     },
 
   ); 
