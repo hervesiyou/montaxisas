@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import Icon  from '@expo/vector-icons/Ionicons';
 import { StyleSheet, Text, View,Button ,TouchableOpacity, Platform} from 'react-native';
-import {createSwitchNavigator,createBottomTabNavigator,createStackNavigator ,createDrawerNavigator,createAppContainer} from 'react-navigation';
+import {createSwitchNavigator,createBottomTabNavigator,createStackNavigator ,createDrawerNavigator,createAppContainer, DrawerItems} from 'react-navigation';
 import {customStyle} from '../styles/loginStyles';
 
 import Slider from '../screens/Slider';
@@ -44,15 +44,7 @@ class Profile extends Component {
     )
   }
 }
-class Wallet extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text> Wallet component </Text>
-      </View>
-    )
-  }
-}
+
 class Alertes extends Component {
   render() {
     return (
@@ -74,9 +66,6 @@ class Setting extends Component {
     )
   }
 }
-
-
-
 
 const LogStack = createStackNavigator({
     
@@ -200,7 +189,7 @@ const DashBoardStackNavigator=createStackNavigator({
 })
 const AppDrawerNavigator=createDrawerNavigator({
 	Menu:{screen:DashBoardStackNavigator},
-})
+  })
 
 const AppSwitchNavigator=createSwitchNavigator({
   Welcome:{screen:LogStack},
