@@ -23,6 +23,7 @@ import MyTripsScreen from '../screens/MyTripsScreen';
 import TabBarIcon from '../components/TabBarIcon';
 import TaxiPositionScreen from '../screens/TaxiPositionScreen';
 import MyWalletScreen from '../screens/MyWalletScreen';
+import ChatScreen from '../screens/chats/ChatScreen';
 
 export class MainNavigator extends React.Component {
   render() {
@@ -188,8 +189,13 @@ const DashBoardStackNavigator=createStackNavigator({
   }
 })
 const AppDrawerNavigator=createDrawerNavigator({
-	Menu:{screen:DashBoardStackNavigator},
-  })
+  
+  Menu:{screen:DashBoardStackNavigator},
+  Home: {screen: ChatScreen},
+  IncomingTrips: {screen: ChatScreen},
+  },{
+    headerMode: 'screen'
+});
 
 const AppSwitchNavigator=createSwitchNavigator({
   Welcome:{screen:LogStack},
