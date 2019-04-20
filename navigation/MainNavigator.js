@@ -1,7 +1,7 @@
  
 import React, { Component } from 'react'
 import Icon  from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Text, View,Button ,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View,Button ,TouchableOpacity, Platform} from 'react-native';
 import {createSwitchNavigator,createBottomTabNavigator,createStackNavigator ,createDrawerNavigator,createAppContainer} from 'react-navigation';
 import {customStyle} from '../styles/loginStyles';
 
@@ -19,6 +19,10 @@ import LoginSigning10Screen from '../screens/LoginSigning10Screen';
 import LoginPhoneNumber11Screen from '../screens/LoginPhoneNumber11Screen';
 import LoginPhoneVerif12Screen from '../screens/LoginPhoneVerif12Screen';
 import LoginSignup13Screen from '../screens/LoginSignup13Screen'; 
+import MyTripsScreen from '../screens/MyTripsScreen';
+import TabBarIcon from '../components/TabBarIcon';
+import TaxiPositionScreen from '../screens/TaxiPositionScreen';
+import MyWalletScreen from '../screens/MyWalletScreen';
 
 export class MainNavigator extends React.Component {
   render() {
@@ -40,6 +44,24 @@ class Profile extends Component {
     )
   }
 }
+class Wallet extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text> Wallet component </Text>
+      </View>
+    )
+  }
+}
+class Alertes extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text> Alert component </Text>
+      </View>
+    )
+  }
+}
 class Setting extends Component {
   render() {
     return (
@@ -53,15 +75,7 @@ class Setting extends Component {
   }
 }
 
-class Feed extends Component {
-  render() {
-    return (
-      <View style={styles.dashboard}>
-        <Text> Feed component </Text>
-      </View>
-    )
-  }
-}
+
 
 
 const LogStack = createStackNavigator({
@@ -84,22 +98,91 @@ const LogStack = createStackNavigator({
 
 ); 
 
+const MyTripStack = createStackNavigator({
+  MyTrips: MyTripsScreen,
 
+});
 
+MyTripStack.navigationOptions = {
+  headerVisible:false,
+  tabBarLabel: 'My Trips',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-list' : 'md-list'}
+    />
+  ),
+};
+const TaxiPositionStack = createStackNavigator({
+  MyTrips: TaxiPositionScreen,
+
+});
+
+TaxiPositionStack.navigationOptions = {
+  headerVisible:false,
+  tabBarLabel: 'Taxi Position',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-pin' : 'md-pin'}
+    />
+  ),
+};
+const GetTaxiStack = createStackNavigator({
+  GetTaxi: Profile,
+});
+
+GetTaxiStack.navigationOptions = {
+  headerVisible:false,
+  tabBarLabel: 'Get Taxi',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-car' : 'md-car'}
+    />
+  ),
+};
+
+const MyWalletStack = createStackNavigator({
+  MyWallet: MyWalletScreen,
+
+});
+
+MyWalletStack.navigationOptions = {
+  headerVisible:false,
+  tabBarLabel: 'My Wallet',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-card-outline' : 'md-card'}
+    />
+  ),
+};
+
+const AlerteStack = createStackNavigator({
+  Alertes: Alertes,
+
+});
+
+AlerteStack.navigationOptions = {
+  headerVisible:false,
+  tabBarLabel: 'Alertes',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-notifications' : 'md-notifications'}
+    />
+  ),
+};
 const DashBoardTabNavigator=createBottomTabNavigator({
-  Feed,
-  Profile,
-  Setting,
+  MyTripStack,
+  TaxiPositionStack,
+  GetTaxiStack,
+  MyWalletStack,
+  AlerteStack,
 
-},
-{
-  navigationOptions:({navigation})=>{
-    const{routeName}=navigation.state.routes[navigation.state.index];
-    return{
-      headerTitle:routeName
-    }
-  }
-})
+});
+
 const DashBoardStackNavigator=createStackNavigator({
  
   TabDashboard:{screen:DashBoardTabNavigator}

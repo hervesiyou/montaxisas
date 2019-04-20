@@ -1,12 +1,7 @@
 import React from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator, createDrawerNavigator, createBottomTabNavigator } from 'react-navigation';
-import AppSwitchNavigator from './MainTabNavigator';
 
-<<<<<<< HEAD
 
-export default createAppContainer( AppSwitchNavigator);
-
-=======
 
 
 import LoginFNLN1Screen from '../screens/LoginFNLN1Screen';
@@ -25,11 +20,8 @@ import LoginSignup13Screen from '../screens/LoginSignup13Screen';
 // import MainComponentScreen from '../screens/MainComponentScreen';
 import Slider from '../screens/Slider';
 
-import MainTabNavigator from './MainTabNavigator';
-import SplashScreen from '../screens/SplashScreen';
  
 const LogStack = createStackNavigator({
-    
     Slider : { screen : Slider,navigationOptions :{ header: null }}, 
     LoginFNLN1:{ screen : LoginFNLN1Screen, navigationOptions :{ header: null }},
     LoginPwdCpwd: { screen :LoginPwdCpwd2Screen ,navigationOptions :{ header: null } },
@@ -52,4 +44,4 @@ const LogStack = createStackNavigator({
 
 export default createAppContainer(LogStack);
  
->>>>>>> d1d2efcc02cca383211b0f08f4adf83da27052e8
+

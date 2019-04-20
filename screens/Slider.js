@@ -2,9 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text , Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import LoginFNLN1Screen from '../screens/LoginFNLN1Screen';
-import AppNavigator from '../navigation/AppNavigator';
 
-export default class slider extends React.Component {
+export default class Slider extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
