@@ -6,9 +6,22 @@ const styles = StyleSheet.create({
         padding: 20
     },
     textInput: {
-        borderRadius: 10
+        borderWidth: 3,
+        borderRadius: 10,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 2,
+        shadowRadius: 2,
+        elevation: 1,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10,
+        height: 35,
+        paddingLeft: 20,
 
     }
 })
 
-export {styles}
+export { styles }
