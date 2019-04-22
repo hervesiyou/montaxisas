@@ -4,6 +4,7 @@ import Icon  from '@expo/vector-icons/Ionicons';
 import { StyleSheet, Text, View,Button ,TouchableOpacity, Platform} from 'react-native';
 import {createSwitchNavigator,createBottomTabNavigator,createStackNavigator ,createDrawerNavigator,createAppContainer, DrawerItems} from 'react-navigation';
 import {customStyle} from '../styles/loginStyles';
+//import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Slider from '../screens/Slider';
 import LoginFNLN1Screen from '../screens/LoginFNLN1Screen';
@@ -36,17 +37,19 @@ export class MainNavigator extends React.Component {
 
 }
  
-class Profile extends Component {
+
+
+class TaxiPosition extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Profile component </Text>
+        <Text> Taxi position component </Text>
       </View>
     )
   }
 }
 
-class Alertes extends Component {
+class Getataxi extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -55,18 +58,18 @@ class Alertes extends Component {
     )
   }
 }
-class Setting extends Component {
+
+class Alertes extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text> Setting Component </Text>
-        <TouchableOpacity onPress={ () => this.props.navigation.navigate("Slider") }> 
-            <Text style={customStyle.mybutton}>Home</Text>
-        </TouchableOpacity>
+      <View style={styles.dashboard}>
+        <Text> Feed component </Text>
       </View>
     )
   }
 }
+
+
 
 const LogStack = createStackNavigator({
     
@@ -104,7 +107,7 @@ MyTripStack.navigationOptions = {
   ),
 };
 const TaxiPositionStack = createStackNavigator({
-  MyTrips: TaxiPositionScreen,
+  MyTrips: TaxiPosition,
 
 });
 
@@ -119,7 +122,7 @@ TaxiPositionStack.navigationOptions = {
   ),
 };
 const GetTaxiStack = createStackNavigator({
-  GetTaxi: Profile,
+  GetTaxi: Getataxi,
 });
 
 GetTaxiStack.navigationOptions = {
@@ -165,6 +168,7 @@ AlerteStack.navigationOptions = {
   ),
 };
 const DashBoardTabNavigator=createBottomTabNavigator({
+
   MyTripStack,
   TaxiPositionStack,
   GetTaxiStack,
@@ -173,6 +177,7 @@ const DashBoardTabNavigator=createBottomTabNavigator({
 
 });
 
+  
 const DashBoardStackNavigator=createStackNavigator({
  
   TabDashboard:{screen:DashBoardTabNavigator}
